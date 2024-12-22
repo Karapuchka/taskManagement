@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/singIn.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Авторизация</title>
+</head>
+<body>
+    <div class="wrapper theme-light-orange">
+        <form class="singIn" action="/singIn" method="get">
+
+            <ol class="line-list">
+                <li class="line-list__items"></li>
+                <li class="line-list__items"></li>
+                <li class="line-list__items"></li>
+                <li class="line-list__items"></li>
+                <li class="line-list__items"></li>
+            </ol>
+
+            <div class="double-items">
+                <input class="singIn__input" type="text" name="inputSingIn" id="input-singIn" placeholder="Ваш логин">
+                <label class="singIn__label" for="input-singIn">Логин</label>
+            </div>
+
+            <div class="double-items">
+                <input class="singIn__input" type="password" name="inputPassword" id="input-password" placeholder="******">
+                <label class="singIn__label" for="input-password">Пароль</label>
+                <span class="eye-passwd"><img id="js-eye-passwd" class="eye-passwd__icon" src="/img/eye_open.png"></span>
+            </div>
+
+            <button class="bnt-def" name="bntSingIn" type="submit">Войти</button>
+
+            <p class="test-reg">Нет аккаунта? <a class="test-reg__link" href="/singOut">Создать!</a></p>
+
+        </form>
+    </div>
+    <script src="/js/singIn.js"></script>
+</body>
+</html>

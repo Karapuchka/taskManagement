@@ -1,0 +1,95 @@
+@import './nullstyle.css';
+@import url(https://fonts.googleapis.com/css?family=Montserrat+Alternates:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+
+.wrapper{
+    min-height: 100%;
+    min-width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}
+
+.theme-light-orange{
+    background-color: #FFCC66;
+}
+
+.double-items{
+    position: relative;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.bnt-def{
+
+    position: relative;
+
+    width: 102px;
+    height: 33px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 15px;
+    font-style: italic;
+
+    background-color: #996600;
+
+    color: #000000;
+
+    transition: .7s ease all;
+}
+
+.bnt-def::after{
+    content: '';
+
+    position: absolute;
+    top: 0;
+    right: -35%; 
+
+    border: 16px solid transparent; 
+    
+    border-left: 20px solid #996600;
+
+    width: 22px;
+    height: 33px;
+    transition: .7s ease all;
+}
+
+.bnt-def:hover{
+    transition: .7s ease all;
+
+    background-color: #FFCC33;
+
+    color: #ffffff;
+}
+
+.bnt-def:hover::after{
+    transition: .7s ease all;
+
+    border-left: 20px solid #FFCC33;
+}
+
+.bnt-def:active{
+    transition: .4s ease all;
+
+    background-color: #FFCC33;
+
+    color: #ffffff;
+}
+
+.bnt-def:active::after{
+    transition: .7s ease all;
+
+    border-left: 20px solid #FFCC33;
+}
+
+@media screen and (max-width: 400px) {
+    .bnt-def::after{
+        right: -36%; 
+    }
+}

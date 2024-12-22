@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/singIn.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Регистрация</title>
+</head>
+<body>
+    <div class="wrapper theme-light-orange">
+        <form class="singIn singIn-big-height" action="/addUser" method="get">
+
+            <ol class="line-list">
+                <li class="line-list__items"></li>
+                <li class="line-list__items"></li>
+                <li class="line-list__items"></li>
+                <li class="line-list__items"></li>
+                <li class="line-list__items"></li>
+            </ol>
+
+            <h1 class="singIn__h1">Регистрация</h1>
+
+            <div class="double-items">
+                <input class="singIn__input" type="text" name="inputSingIn" id="input-singIn" placeholder="Ваш логин">
+                <label class="singIn__label" for="input-singIn">Придумайте логин</label>
+            </div>
+
+            <div class="double-items">
+                <input class="singIn__input" type="password" name="inputPassword" id="input-password" placeholder="******">
+                <label class="singIn__label" for="input-password">Придумайте пароль</label>
+                <span class="eye-passwd"><img id="js-eye-passwd" class="eye-passwd__icon" src="/img/eye_open.png"></span>
+            </div>
+
+            <div class="double-items">
+                <input class="singIn__input" type="text" name="inputName" id="input-name" placeholder="Ваше имя">
+                <label class="singIn__label" for="input-password">Укажите имя</label>
+            </div>
+
+            <button class="bnt-def" name="bntSingIn" type="submit">Создать</button>
+
+            <p class="test-reg">Уже есть аккаунт? <a class="test-reg__link" href="/">Войди!</a></p>
+
+        </form>
+    </div>
+    <script src="/js/singIn.js"></script>
+</body>
+</html>
