@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    {{!-- <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon"> --}}
     <link rel="stylesheet" href="/css/singIn.css">
     <link rel="stylesheet" href="/css/main.css">
     <title>Авторизация</title>
@@ -26,7 +26,7 @@
             </div>
 
             <div class="double-items">
-                <input class="singIn__input" type="password" name="inputPassword" id="input-password" placeholder="******">
+                <input data-psopen="true" class="singIn__input" type="password" name="inputPassword" id="input-password" placeholder="******">
                 <label class="singIn__label" for="input-password">Пароль</label>
                 <span class="eye-passwd"><img id="js-eye-passwd" class="eye-passwd__icon" src="/img/eye_open.png"></span>
             </div>
