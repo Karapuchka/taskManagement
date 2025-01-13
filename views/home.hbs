@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!-- <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon"> --}}
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Менеджер задач</title>
+</head>
+<body>
+    <div class="wrapper theme-light-orange">
+        <section class="desk">
+            <div class="container">
+                <div class="header home-header">
+                    <button type="submit" class="bnt-def">Добавить задачу</button>
+                    <ol class="home-header__list">
+                        <li class="home-header__list__item">Профиль</li>
+                        <li class="home-header__list__item">О сайте</li>
+                    </ol>
+                </div>
+
+                <div class="slider">
+                    <div class="slider__line">
+                        {{#each group}}
+                            <div class="slider__line__item">
+                                <div class="slider__line__item__header">
+                                    <h2 class="slider__line__item__header__title">{{this.title}}</h2>
+                                    <div class="slider__line__item__header__info">
+                                        <img src="" class="slider__line__item__header__info__icon" alt="Информация о задаче">
+                                    </div>
+                                </div>
+                                <ol class="slider__line__item__list">
+                                    {{#each this.listTask}}
+                                        <li data-staus="open" class="slider__line__item__list__item">{{this.titleTask}}</li>
+                                    {{/each}}
+                                </ol>
+                                <div class="slider__line__item__footer">
+                                    <div class="slider__line__item__footer__btn"></div>
+
+                                    <div class="slider__line__item__footer__settings">
+                                        <div class="double-items">
+                                            <div class="slider__line__item__footer__settings__btn bnt-def"></div>
+                                            <div class="slider__line__item__footer__settings__btn bnt-def"></div>
+                                        </div>
+                                        <div class="slider__line__item__footer__settings__btn">{{this.time}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>   
+        </section>
+        <section class="mobile"></section>
+    </div>
+    <script src="/js/main.js"></script>
+</body>
+</html>
