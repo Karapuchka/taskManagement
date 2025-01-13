@@ -13,7 +13,7 @@ const pool = mysql.createPool({
     connectionLimit: 10,
     host: 3000,
     user: 'root',
-    database: 'hospitalmanager',
+    database: 'taskManager',
 });
 
 //Создание парсера
@@ -44,6 +44,52 @@ app.get('/', (_, res)=>{
 
 app.get('/singOut', (_, res)=>{
     return res.render('singOut.hbs');
+});
+
+app.post('/singIn', urlcodedParsers, (req, res)=>{
+    if(!req.body) return res.statusCode(400);
+
+    pool.query('SELECT * FROM users', (err, data)=>{
+        if(err) return console.log(err);
+
+        for (let i = 0; i < data.length; i++) {
+            if(data[i].login == req.body.login && data[i].password == req.body.password){
+                user = data[i];
+                return res.redirect('/home');
+            }
+            else if(data[i].login == req.body.login && data[i].password != req.body.password){
+                return res.render('index.hbs', {
+                    title: 'Пароль введён неправильно!',
+                });
+            }            
+        }
+
+        return res.render('index.hbs', {
+            title: 'Пользователь не найден!',
+        });
+    })
+});
+
+app.post('/addUser', urlcodedParsers, (req, res)=>{
+    if(!req.body) return res.sendStatus(400);
+
+    pool.query('SELECT * FROM users', (err, data)=>{
+        if(err) return console.log(err);
+
+        for (let i = 0; i < data.length; i++) {
+            if(data[i].login == req.body.login){
+                return res.render('singOut.hbs', {
+                    title: 'Логин занят!',
+                });
+            }            
+        }
+
+        pool.query('INSERT INTO users (login, password, name) VALUES(?,?,?)', [req.body.login, req.body.password, req.body.name], (err)=>{
+            if(err) return console.log(err);
+        });
+    
+        res.redirect('/');
+    })
 });
 
 app.listen(3000, ()=>{
