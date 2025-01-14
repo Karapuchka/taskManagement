@@ -22,7 +22,7 @@
 
                 <div class="slider">
                     <div class="slider__line">
-                        {{#each group}}
+                        {{#each tasks}}
                             <div class="slider__line__item">
                                 <div class="slider__line__item__header">
                                     <h2 class="slider__line__item__header__title">{{this.title}}</h2>
@@ -30,11 +30,7 @@
                                         <img src="" class="slider__line__item__header__info__icon" alt="Информация о задаче">
                                     </div>
                                 </div>
-                                <ol class="slider__line__item__list">
-                                    {{#each this.listTask}}
-                                        <li data-staus="open" class="slider__line__item__list__item">{{this.titleTask}}</li>
-                                    {{/each}}
-                                </ol>
+                                
                                 <div class="slider__line__item__footer">
                                     <div class="slider__line__item__footer__btn"></div>
 

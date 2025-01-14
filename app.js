@@ -53,8 +53,13 @@ app.post('/singIn', urlcodedParsers, (req, res)=>{
         if(err) return console.log(err);
 
         for (let i = 0; i < data.length; i++) {
+
             if(data[i].login == req.body.login && data[i].password == req.body.password){
-                user = data[i];
+                user = {
+                    'id': data[i].id,
+                    'login': data[i].login,
+                    'name': data[i].name,
+                };
                 return res.redirect('/home');
             }
             else if(data[i].login == req.body.login && data[i].password != req.body.password){
@@ -90,6 +95,29 @@ app.post('/addUser', urlcodedParsers, (req, res)=>{
     
         res.redirect('/');
     })
+});
+
+app.get('/home', (_, res)=>{
+
+    pool.query('SELECT * FROM target', (err, data)=>{
+        if(err) return console.log(err);
+
+        let tasks = [];
+
+        for (let i = 0; i < data.length; i++) {
+            if(user.id == data[i].idUser){
+                tasks.push({
+                    'title': data[i].title,
+                    'time': data[i].time,
+                    'status': data[i].status,
+                });
+            };
+        };
+
+        res.render('home.hbs', {
+            'tasks': tasks,
+        })
+    });
 });
 
 app.listen(3000, ()=>{
