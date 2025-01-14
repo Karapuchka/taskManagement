@@ -116,7 +116,9 @@
 .error-mes{
     position: absolute;
     top: 75%;
-    left: 43%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
     color: #ff0000;
 
     font-size: 24px;

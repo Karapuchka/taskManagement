@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="wrapper theme-light-orange">
-        <form class="singIn singIn-big-height" name="login" action="/addUser" method="post">
+        <form class="singIn singIn-big-height" name="loginUser" action="/addUser" method="post">
 
             <ol class="line-list">
                 <li class="line-list__items"></li>
@@ -30,7 +30,7 @@
             <div class="double-items">
                 <input class="singIn__input" type="password" name="password" id="input-password" placeholder="******">
                 <label class="singIn__label" for="input-password">Придумайте пароль</label>
-                <span class="eye-passwd"><img id="js-eye-passwd" class="eye-passwd__icon" src="/img/eye_open.png"></span>
+                <span class="eye-passwd"><img id="js-eye-passwd" class="eye-passwd__icon" src="/img/eye_close.png"></span>
             </div>
 
             <div class="double-items">
@@ -38,7 +38,7 @@
                 <label class="singIn__label" for="input-password">Укажите имя</label>
             </div>
 
-            <button class="bnt-def" id="btn" name="bntSingIn" type="submit">Создать</button>
+            <button class="bnt-def" id="btn" name="btnLogin" type="submit">Создать</button>
 
             <p class="test-reg">Уже есть аккаунт? <a class="test-reg__link" id="btn-login" href="/">Войди!</a></p>
 
