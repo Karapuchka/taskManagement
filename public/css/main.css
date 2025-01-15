@@ -12,6 +12,12 @@
     position: relative;
 }
 
+.container{
+    min-width: 85%;
+    padding: 60px 15px;
+    margin: 0 auto;
+}
+
 .theme-light-orange{
     background-color: #FFCC66;
 }
@@ -58,6 +64,19 @@
     width: 22px;
     height: 33px;
     transition: .7s ease all;
+}
+
+.bnt-def--home{
+    width: auto;
+    padding: 0 15px;
+
+    font-family: 'Montserrat Alternates';
+    font-style: normal;
+    font-size: 20px;
+}
+
+.bnt-def--home::after{
+    right: -16%; 
 }
 
 .bnt-def:hover{

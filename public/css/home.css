@@ -1,0 +1,149 @@
+.home-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    width: 100%;
+}
+
+.home-header__list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+
+    list-style: none;
+
+    border-bottom: 1px solid #000000;
+
+    padding-bottom: 10px;
+
+    font-family: 'Montserrat Alternates';
+    font-size: 20px;
+
+    user-select: none;
+}
+
+.home-header__list__item{
+    cursor: pointer;
+
+    transition: all .7s ease;
+    
+    color: #000000;
+}
+
+.home-header__list__item:hover{
+    transition: all .7s ease;
+
+    color: #ffffff;
+}
+
+.task{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 20px;
+
+    width: 100%;
+    padding: 20px 0;
+
+    flex-wrap: wrap;
+}
+
+.task__item{
+    height: 120px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-radius: 30px;
+
+    background-color: #ffffff;
+
+    font-family: 'Montserrat Alternates';
+}
+
+.task__item__title{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.task__item__time{
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.task__item__info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 20px 15px 0 15px;
+}
+
+.task__item__btns{
+    position: relative;
+    width: 100%;
+    height: 47px;
+}
+
+.task__item__btns__btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 0;
+
+    position: absolute;
+
+    cursor: pointer;
+}
+
+.task__item__btns__img{
+    width: 25px;
+    height: 25px;
+}
+
+.task__item__btns__img__icon{
+    width: 100%;
+    height: 100%;
+}
+
+.task__item__btns__btn__del{
+    z-index: 2;
+
+    width: 30%;
+
+    border-radius: 20px;
+    border: 1px solid black;
+
+    background-color: #ff0000;
+    transition: all .7s ease;
+}
+
+.task__item__btns__btn__del:hover{
+width: 40%;
+   transition: all .7s ease;
+}
+
+.task__item__btns__btn__update{
+    z-index: 1;
+
+    width: 100%;
+
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid black;
+
+    transition: all .7s ease;
+}
+
+.task__item__btns__btn__update:hover{
+    background-color: #71b3fd;
+    transition: all .7s ease;
+}
