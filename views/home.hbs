@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{!-- <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon"> --}}
-    <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/home.css">
     <title>Менеджер задач</title>
 </head>
 <body>
     <div class="wrapper theme-light-orange">
         <div class="container">
-            <div class="header home-header">
+            <header class="header home-header">
                 <button type="submit" class="bnt-def bnt-def--home">Добавить задачу</button>
                 <ol class="home-header__list">
                     <li class="home-header__list__item">Профиль</li>
                     <li class="home-header__list__item">О сайте</li>
                 </ol>
-            </div>
+            </header>
 
-            <div class="task">
+            <section class="task">
                 {{#each tasks}}
                     <div class="task__item">
                         <div class="task__item__info">
@@ -32,9 +32,28 @@
                         </div>
                     </div>
                 {{/each}}
-            </div>
+            </section>
         </div>
+        
+        <section class="window-add">
+            <div class="window-add__container">
+                <span class="window-add__bnt-close" id="js-w-add-btn-close"></span>
+                <form class="window-add__form" name="addTaskForm" action="adding-task" method="post">
+                    <div class="window-add__form__inputs">
+                        <label class="window-add__form__inputs__label" for="js-input-title">Укажите заголовок:</label>
+                        <input class="window-add__form__inputs__input" type="text" name="addTaskTitle" id="js-input-title" placeholder="Убрать на кухне">
+                    </div>
+                    <div class="window-add__form__inputs">
+                        <label class="window-add__form__inputs__label" for="js-input-time">Укажите дату:</label>
+                        <input class="window-add__form__inputs__input" type="datetime-local" name="addTaskTime" id="js-input-time">
+                    </div>
+                    <button class="window-add__form__btn" name="addSubmit" id="js-bnt-add-task" type="submit">Добавить</button>
+                </form>
+            </div>
+        </section>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="/js/main.js"></script>
 </body>
 </html>

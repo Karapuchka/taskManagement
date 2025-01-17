@@ -15,7 +15,13 @@
 .container{
     min-width: 85%;
     padding: 60px 15px;
-    margin: 0 auto;
+
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    z-index: 1;
+
+    transform: translate(-50%, -50%);
 }
 
 .theme-light-orange{
