@@ -103,13 +103,14 @@ app.get('/home', (_, res)=>{
         if(err) return console.log(err);
 
         let tasks = [];
-
+        
         for (let i = 0; i < data.length; i++) {
+
             if(user.id == data[i].idUser){
                 tasks.push({
+                    'id': data[i].id,
                     'title': data[i].title,
                     'time': data[i].time,
-                    'status': data[i].status,
                 });
             };
         };
@@ -120,28 +121,62 @@ app.get('/home', (_, res)=>{
     });
 });
 
+app.post('/adding-task', JSONParser, (req, res)=>{
+    if(!req.body) return res.sendStatus(400);
+    
+    pool.query('INSERT INTO target (title, time, idUser) VALUES (?,?,?,?)', 
+    [req.body.title, req.body.time, user.id], (err, data)=>{
+        if(err) return console.log(err);
+    });
+
+    return res.send('Задача добавлена!');
+});
+
+app.post('/del-task', JSONParser, (req, res)=>{
+    if(!req.body) return res.sendStatus(400);
+
+    pool.query('DELETE FROM target WHERE id=?', [+req.body.id], (err)=> {if(err) return console.log(err)});
+
+    return res.send('Задача удалена!');
+});
+
+app.post('/up-task', JSONParser, (req, res)=>{
+    if(!req.body) return res.sendStatus(400);
+
+    pool.query('SELECT * FROM target', (err, data)=>{
+        if(err) return console.log(err);
+
+        for (let i = 0; i < data.length; i++) {
+            if(data[i].id == req.body.id){
+
+                if(req.body.title == '' && req.body.time == ''){
+
+                    return res.send('Поля для пустые. Задача не изменена!');
+
+                } else if(req.body.title != '' && req.body.time != ''){
+
+                    pool.query('UPDATE target SET title=? time=? WHERE id=?', [req.body.title, req.body.time, req.body.id], (err)=> {if(err) return console.log(err)});
+
+                    return res.send('Заголовок и время задачи изменены!');
+
+                }  else if(req.body.title != '' && req.body.time == ''){
+
+                    pool.query('UPDATE target SET title=? WHERE id=?', [req.body.title, req.body.id], (err)=> {if(err) return console.log(err)});
+                    
+                    return res.send('Заголовок задачи изменен!');
+
+                } else if(req.body.time != '' && req.body.title == ''){
+                    
+                    pool.query('UPDATE target SET time=? WHERE id=?', [req.body.time, req.body.id], (err)=> {if(err) return console.log(err)});
+                    
+                    return res.send('Время задачи изменено!');
+
+                };
+            };         
+        };
+    });
+});
+
 app.listen(3000, ()=>{
     return console.log('Server ative. URL: http://localhost:3000/');
 });
-
-//Преобразование даты из бд в нормальный вид
-function validDate(date){
-    let arr = String(date).split(' ');
-
-    let listMonth = {
-        "Jan": "Января",
-        "Feb": "Февраля",
-        "Mar": "Марта",
-        "Apr": "Апреля",
-        "May": "Мая",
-        "June": "Июня",
-        "July": "Июля",
-        "Aug": "Августа",
-        "Sept": "Сентября",
-        "Oct": "Октября",
-        "Nov": "Ноября",
-        "Dec": "Декабря",
-    }
-
-    return `${arr[2]} ${listMonth[arr[1]]} ${arr[3]}`;
-}

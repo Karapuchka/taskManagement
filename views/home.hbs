@@ -12,30 +12,30 @@
     <div class="wrapper theme-light-orange">
         <div class="container">
             <header class="header home-header">
-                <button type="submit" class="bnt-def bnt-def--home">Добавить задачу</button>
+                <button type="submit" class="bnt-def bnt-def--home" id="js-open-win-add">Добавить задачу</button>
                 <ol class="home-header__list">
                     <li class="home-header__list__item">Профиль</li>
                     <li class="home-header__list__item">О сайте</li>
                 </ol>
             </header>
 
-            <section class="task">
+            <section class="task" id="js-list-tasks">
                 {{#each tasks}}
-                    <div class="task__item">
+                    <div action="task-options" method="post" class="task__item task__item--{{this.status}}">
                         <div class="task__item__info">
                             <h2 class="task__item__title">{{this.title}}</h2>
                             <h3 class="task__item__time">Дата окончания: {{this.time}}</h3>
                         </div>
                          <div class="task__item__btns">
-                            <div class="task__item__btns__btn task__item__btns__btn__del"><div class="task__item__btns__img"><img class="task__item__btns__img__icon" src="/img/delete.png" alt="Кнопка удалить запись"></div></div>
-                            <div class="task__item__btns__btn task__item__btns__btn__update"><div class="task__item__btns__img task__item__btns__update"><img class="task__item__btns__img__icon" src="/img/update.png" alt="Кнопка редактирования записи"></div></div>
+                            <div data-id="{{this.id}}" class="task__item__btns__btn task__item__btns__btn__del"><div class="task__item__btns__img"><img class="task__item__btns__img__icon" src="/img/delete.png" alt="Кнопка удалить запись"></div></div>
+                            <div data-id="{{this.id}}" class="task__item__btns__btn task__item__btns__btn__update"><div class="task__item__btns__img task__item__btns__update"><img class="task__item__btns__img__icon" src="/img/update.png" alt="Кнопка редактирования записи"></div></div>
                         </div>
                     </div>
                 {{/each}}
             </section>
         </div>
         
-        <section class="window-add">
+        <section class="window-add" id="js-win-close">
             <div class="window-add__container">
                 <span class="window-add__bnt-close" id="js-w-add-btn-close"></span>
                 <form class="window-add__form" name="addTaskForm" action="adding-task" method="post">
@@ -45,9 +45,26 @@
                     </div>
                     <div class="window-add__form__inputs">
                         <label class="window-add__form__inputs__label" for="js-input-time">Укажите дату:</label>
-                        <input class="window-add__form__inputs__input" type="datetime-local" name="addTaskTime" id="js-input-time">
+                        <input class="window-add__form__inputs__input" type="date" name="addTaskTime" id="js-input-time">
                     </div>
                     <button class="window-add__form__btn" name="addSubmit" id="js-bnt-add-task" type="submit">Добавить</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="window-add" id="js-win-up">
+            <div class="window-add__container window-up__container">
+                <span class="window-add__bnt-close" id="js-w-up-btn-close"></span>
+                <form class="window-add__form" name="upTaskForm" action="up-task" method="post">
+                    <div class="window-add__form__inputs">
+                        <label class="window-add__form__inputs__label" for="js-up-input-title">Изменить заголовок:</label>
+                        <input class="window-add__form__inputs__input" type="text" name="upTaskTitle" id="js-up-input-title" placeholder="Убрать на кухне">
+                    </div>
+                    <div class="window-add__form__inputs">
+                        <label class="window-add__form__inputs__label" for="js-up-input-time">Изменить дату:</label>
+                        <input class="window-add__form__inputs__input" type="date" name="upTaskTime" id="js-up-input-time">
+                    </div>
+                    <button class="window-add__form__btn" name="upSubmit" id="js-bnt-up-task" type="submit">Добавить</button>
                 </form>
             </div>
         </section>
